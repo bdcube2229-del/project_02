@@ -40,7 +40,7 @@
 <div class="alert" id="alert"></div><div class="actions"><button type="button" class="btn ghost" id="prev">이전</button><button type="button" class="btn primary" id="next">다음</button><button type="submit" class="btn primary hidden" id="submit">설문 제출</button></div></form></main>
 <div class="modal hidden" id="modal"><div class="modal-card"><div class="ok">✓</div><h3>응답이 제출되었습니다.</h3><p class="desc">소중한 의견 감사합니다.</p><button class="btn primary" onclick="location.reload()">확인</button></div></div>
 <script>
-const SCRIPT_URL="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzap53kls3YOIjwRuP3iraJwdW4G9emUFSvYJt4BJF0qacSChqpZxL74Stms8CkHOpr/exec";
 const form=document.getElementById('surveyForm'),steps=[...document.querySelectorAll('.step')],prev=document.getElementById('prev'),next=document.getElementById('next'),submit=document.getElementById('submit'),alertBox=document.getElementById('alert'),bar=document.getElementById('bar'),stepText=document.getElementById('stepText'),pctText=document.getElementById('pctText'),modal=document.getElementById('modal'),featureCount=document.getElementById('featureCount');let current=0;
 function show(i){current=i;steps.forEach((s,n)=>s.classList.toggle('active',n===i));const pct=Math.round((i+1)/steps.length*100);bar.style.width=pct+'%';stepText.textContent=(i+1)+' / '+steps.length;pctText.textContent=pct+'%';prev.disabled=i===0;next.classList.toggle('hidden',i===steps.length-1);submit.classList.toggle('hidden',i!==steps.length-1);alertBox.textContent='';window.scrollTo({top:document.querySelector('.wrap').offsetTop-8,behavior:'smooth'})}
 function count(name){return form.querySelectorAll('input[name="'+name+'"]:checked').length}
