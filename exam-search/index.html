@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="단어와 지문으로 찾는 고1·고2·고3 공식 모의고사 기출 검색. 학년을 선택하고 영어 검색어의 위치가 표시된 PDF를 열어보세요.">
+  <meta name="theme-color" content="#172e42"><title>기출 찾기 | 나의 시험 서재</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css">
+  <script src="./config.js" defer></script><script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./" aria-label="나의 시험 서재 홈"><span class="brand-mark">書</span><span>나의 시험 서재<small>MOCK EXAM ARCHIVE</small></span></a><button class="text-button" id="coverage-open">수록 자료 안내 <span aria-hidden="true">↗</span></button></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">찾던 그 지문, 실제 기출에서.</p><h1>기출 문제를 찾아보세요.</h1><p class="intro-copy">단어나 지문을 입력하면, 해당 내용이 담긴 모의고사 문항을 찾아드립니다.</p></div><div class="archive-stamp" aria-hidden="true">기출<br><span>ARCHIVE</span></div></section>
+    <form id="search-form" role="search">
+      <div class="search-box"><label class="sr-only" for="query">찾을 단어 또는 지문</label><span aria-hidden="true" class="search-icon">⌕</span><input id="query" name="q" type="search" maxlength="200" placeholder="예: 유전, 산업 혁명, at the same time" autocomplete="off"><button class="primary" type="submit">기출 검색 <span aria-hidden="true">→</span></button></div>
+      <div class="search-options"><label><input type="radio" name="mode" value="all" checked> 모든 단어 포함</label><label><input type="radio" name="mode" value="phrase"> 입력한 문장 그대로</label><span>띄어쓰기 · 문장 부호 · 대소문자 구분 없이 검색</span></div>
+    </form>
+    <div class="workspace">
+      <aside class="filters" aria-label="검색 조건"><div class="filter-heading"><h2>검색 조건</h2><button id="reset" class="text-button" type="button">초기화 ↻</button></div>
+        <label for="grade">학년</label><select id="grade" aria-label="학년"><option value="">전체 학년</option></select>
+        <label for="subject">과목</label><select id="subject"><option value="">전체 과목</option></select>
+        <label for="detail">세부 과목</label><select id="detail"><option value="">전체</option></select>
+        <label for="year">시행 연도</label><select id="year"><option value="">전체 연도</option></select>
+        <label for="kind">시험</label><select id="kind"><option value="">전체 시험</option></select>
+        <div class="coverage-note"><span class="live-dot"></span><strong id="coverage-title">수록 자료 확인 중</strong><p id="coverage-summary">공식 배포 자료를 확인하고 있습니다.</p><button id="coverage-more" type="button" class="text-button">검색 범위 자세히 보기 →</button></div>
+      </aside>
+      <section class="results-section" aria-labelledby="results-title"><div class="results-heading"><div><p class="eyebrow">SEARCH RESULTS</p><h2 id="results-title">수록 문항</h2><p id="result-summary" role="status" aria-live="polite">자료를 불러오고 있습니다.</p></div><div class="result-tools"><label class="sr-only" for="sort">결과 정렬</label><select id="sort"><option value="newest">최신 연도순</option><option value="oldest">오래된 연도순</option></select><button class="secondary" type="button" id="print" disabled>목록 PDF</button></div></div>
+        <p class="reading-note">연도 → 시험 → 과목 → 문항 번호 순으로 표시합니다. 영어 검색 결과의 <strong>단어 표시 PDF</strong>에서는 검색어 위치가 노란색으로 표시됩니다.</p>
+        <div id="results" aria-busy="true"><div class="state-card"><span class="loader" aria-hidden="true"></span><h3>기출 목록을 불러오는 중입니다.</h3></div></div>
+        <nav class="pagination" id="pagination" aria-label="결과 페이지"></nav>
+      </section>
+    </div>
+    <footer><p>평가원·교육청 출제 / EBSi 공식 배포 자료 연결</p><p>본문을 생성하지 않는 기출 검색 · 유료 AI API 사용 없음</p></footer>
+  </main>
+  <dialog id="coverage-dialog" aria-labelledby="coverage-dialog-title"><div class="dialog-heading"><div><p class="eyebrow">ABOUT THIS ARCHIVE</p><h2 id="coverage-dialog-title">검색할 수 있는 자료</h2></div><button class="icon-button" id="coverage-close" aria-label="안내 닫기">×</button></div><p id="catalog-stats"></p><ul id="limitations"></ul><h3>출처와 수록 시험</h3><p>평가원·교육청이 출제하고 EBSi가 배포하는 공개 문제지를 기준으로 문항 번호를 확인했습니다. 문제 본문은 원문 링크에서 확인할 수 있습니다.</p><div id="source-list"></div><a class="source-link" href="https://www.ebsi.co.kr/ebs/xip/xipc/previousPaperList.ebs?targetCd=D300" target="_blank" rel="noopener noreferrer">EBSi 공식 기출문제 자료실 ↗</a></dialog>
+  <noscript><p class="no-script">이 검색 서비스는 자바스크립트를 켜야 사용할 수 있습니다. Chrome 설정에서 자바스크립트를 허용해 주세요.</p></noscript>
+</body></html>

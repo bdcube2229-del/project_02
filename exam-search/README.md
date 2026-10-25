@@ -1,0 +1,21 @@
+# 기출 찾기 — GitHub Pages
+
+공유 주소: https://bdcube2229-del.github.io/project_02/exam-search/
+
+이 폴더는 고1·고2·고3 기출 검색 앱의 화면입니다. GitHub Pages의 하위 경로에서도 사용할 수 있도록 모든 화면 파일을 상대 경로로 연결했습니다. 저장소의 기존 설문 페이지는 루트 주소에서 계속 사용할 수 있습니다.
+
+## 현재 구성
+
+- 화면과 PDF 열람 페이지: 이 GitHub Pages 폴더
+- 기출 검색 및 단어 표시 PDF API: https://my-exam-studio.bdcube2229.chatgpt.site
+- 검색 색인과 원본 문제지: 공개 GitHub 저장소에 포함하지 않음
+
+영어 검색 결과의 ‘단어 표시 PDF’는 viewer.html을 열어 서버에서 생성한 PDF를 받아 표시합니다. 표시 PDF의 열람 화면과 공유 주소는 GitHub Pages에 있습니다. 기능을 사용하려면 위 API 서버가 동작해야 합니다. 이 구성은 ChatGPT Sites 서버에서 완전히 독립한 구성은 아닙니다.
+
+서버도 본인 계정으로 옮기는 경우 config.js의 apiBase를 새 서버 주소로 바꾸고, 해당 서버에서 https://bdcube2229-del.github.io 원본의 교차 출처 요청을 허용해야 합니다. 검색과 PDF 생성 API는 정적 GitHub Pages만으로 실행할 수 없습니다.
+
+## 업데이트
+
+이 폴더의 파일을 수정해 main 브랜치에 커밋합니다. 저장소의 GitHub Pages가 main 브랜치의 루트에서 배포되도록 설정되어 있어야 합니다. 브랜치 배포를 사용하는 경우 별도 빌드 명령이나 Node.js 설치는 필요하지 않습니다.
+
+학년, 과목, 시행 연도를 선택한 뒤 단어 또는 문장을 검색합니다. PDF가 화면 안에 보이지 않을 때는 ‘표시 PDF 새 창으로 열기’ 또는 ‘저장’ 버튼을 사용할 수 있습니다.
