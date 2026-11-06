@@ -9,7 +9,7 @@ globalThis.ExamCatalog=Object.freeze({
       if(filters.subject&&filters.subject!==source.subject)continue;
       if(filters.kind&&filters.kind!==source.kind)continue;
       if(filters.detail){
-        if(filters.detail==="공통"){if(source.grade!==3||!["국어","수학"].includes(source.subject))continue;}
+        if(filters.detail==="공통"){if(source.grade!==3||source.year<2021||!["국어","수학"].includes(source.subject))continue;}
         else if(filters.detail!==source.detail)continue;
       }
       const key=source.pdfUrl.split("#")[0];if(!unique.has(key))unique.set(key,source);
